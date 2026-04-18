@@ -1,0 +1,144 @@
+@import url("https://fonts.cdnfonts.com/css/general-sans");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- Global Styles --- */
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: #dfdff0;
+  font-family: "General Sans", sans-serif;
+}
+
+/* --- Custom Fonts --- */
+@layer base {
+  @font-face {
+    font-family: "Circular Web";
+    src: url("/fonts/circularweb-book.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "General Sans";
+    src: url("/fonts/general.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Robert Medium";
+    src: url("/fonts/robert-medium.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Robert Regular";
+    src: url("/fonts/robert-regular.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Zentry";
+    src: url("/fonts/zentry-regular.woff2") format("woff2");
+  }
+}
+
+/* --- Utilities --- */
+@layer utilities {
+  /* Custom font utility */
+  .font-general {
+    font-family: "General Sans", sans-serif;
+  }
+
+  .font-zentry {
+    font-family: "Zentry", sans-serif;
+  }
+
+  .border-hsla {
+    @apply border border-white/20;
+  }
+
+  /* Navbar link */
+  .nav-hover-btn {
+    @apply relative ml-10 font-general text-xs uppercase text-blue-50 cursor-pointer;
+  }
+
+  .nav-hover-btn::after {
+    @apply absolute bottom-0 left-0 h-[2px] w-full bg-neutral-800 transition-transform duration-300 ease-[cubic-bezier(0.65,0.05,0.36,1)];
+    transform-origin: bottom right;
+    transform: scaleX(0);
+  }
+
+  .nav-hover-btn:hover::after {
+    transform-origin: bottom left;
+    transform: scaleX(1);
+  }
+
+  /* Floating Navbar */
+  .floating-nav {
+    @apply bg-black rounded-lg border;
+  }
+
+  .absolute-center {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+  }
+
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .special-font b {
+    font-family: "Zentry";
+    font-feature-settings: "ss01" on;
+  }
+
+  .hero-heading {
+    @apply uppercase font-zentry font-black text-5xl sm:text-7xl md:text-9xl lg:text-[12rem];
+  }
+
+  .about-subtext {
+    @apply absolute bottom-[-80vh] left-1/2 max-w-96 -translate-x-1/2 text-center font-circular-web text-lg md:max-w-[34rem];
+  }
+
+  .about-image {
+    @apply absolute left-1/2 top-0 z-20 h-[60vh] w-96 origin-center -translate-x-1/2 overflow-hidden rounded-3xl md:w-[30vw];
+  }
+
+  .animated-title {
+    @apply flex flex-col gap-1 text-7xl uppercase leading-[.8] text-white sm:px-32 md:text-[6rem];
+  }
+
+  .animated-word {
+    @apply special-font font-zentry font-black opacity-0;
+    transform: translate3d(10px, 51px, -60px) rotateY(60deg) rotateX(-40deg);
+    transform-origin: 50% 50% -150px;
+    will-change: opacity, transform;
+  }
+
+  /* Indicator bars */
+  .indicator-line {
+    @apply h-1 w-px rounded-full bg-white transition-all duration-200 ease-in-out;
+  }
+
+  .indicator-line.active {
+    animation: indicator-line 0.5s ease infinite;
+  }
+
+  @keyframes indicator-line {
+    0% {
+      height: 4px;
+      transform: translateY(0);
+    }
+    50% {
+      height: 16px;
+      transform: translateY(-4px);
+    }
+    100% {
+      height: 4px;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer utilities {
+  .font-circular-web {
+    font-family: "Circular Web", sans-serif;
+  }
+}
